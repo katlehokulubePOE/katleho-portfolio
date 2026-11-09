@@ -31,7 +31,7 @@ Open `index.html` in a browser. For the closest match to hosting, use a local st
 - Add a custom domain later if desired; it is not required for GitHub Pages.
 
 ## CV and professional links
-- The portfolio includes a downloadable CV at `downloads/Katleho_Kulube_CV.pdf`.
+- The portfolio's downloadable CV has been updated to the supplied `Katleho_Kulube_CV.pdf` at `downloads/Katleho_Kulube_CV.pdf`.
 - LinkedIn is linked from the main navigation, contact section and footer.
 - To update the CV later, replace that PDF while keeping the same filename.
 - The displayed contact number is 076 752 4890.
