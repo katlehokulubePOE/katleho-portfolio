@@ -69,3 +69,6 @@ html.modal-open body:after{content:"";position:fixed;inset:0;background:rgba(4,2
 
 /* External portfolio project link */
 .project-external{display:block;color:inherit;text-decoration:none}.project-external .project-image{height:270px}.project-external:hover img,.project-external:focus-visible img{transform:scale(1.045)}.project-external:hover .view-label,.project-external:focus-visible .view-label{opacity:1;transform:none}.project-external:focus-visible{outline:3px solid var(--teal);outline-offset:5px}
+
+/* Ubuntu live website project: prominent, always-visible external link */
+.ubuntu-project-card .project-image{background:#e7edeb;border:1px solid #cbd8d7}.ubuntu-project-card .project-image img{object-fit:contain;mix-blend-mode:normal}.ubuntu-project-card .view-label{opacity:1;transform:none}.ubuntu-project-card .project-meta span:last-child{color:var(--navy)}.ubuntu-project-card .project-external:focus-visible{outline:3px solid var(--teal);outline-offset:5px}
