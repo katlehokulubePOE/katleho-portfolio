@@ -38,3 +38,24 @@ Open `index.html` in a browser. For the closest match to hosting, use a local st
 
 ## Updating projects
 Replace the corresponding JPG files in `assets/` and keep the same filenames, or edit the project cards in `index.html` to add or remove portfolio items.
+
+
+## Google Tag Manager and Google Analytics 4
+
+The Google Tag Manager container `GTM-5KRP4GRZ` is installed in `index.html`. The standard GTM loader is placed in the document head, and the noscript iframe fallback is placed immediately after the opening body tag. The website sets Google Consent Mode defaults before the container loads.
+
+To start collecting GA4 data:
+1. Open Google Tag Manager and select container `GTM-5KRP4GRZ`.
+2. Create a **Google tag** (or GA4 configuration tag) and enter the GA4 Measurement ID for your web data stream (format `G-XXXXXXXXXX`).
+3. Configure the tag to fire on all pages and respect the built-in `analytics_storage` consent check.
+4. Use Preview to test the container. Confirm analytics remains denied until a visitor accepts the website's analytics banner.
+5. Submit and **Publish** the GTM container. Changes made in the GTM workspace do not go live until published.
+6. Verify visits in Google Analytics under **Reports → Realtime** after accepting analytics on the live website.
+
+The website's `analytics.js` handles the visitor's accept/reject choice and updates Consent Mode. It does not load a second, direct GA4 tag, avoiding duplicate tracking. If you add more pages, include the same single GTM head snippet and body noscript fallback on each page. Do not install a second copy of the container.
+
+## Portrait and favicon
+The supplied professional portrait replaces the initials mark in the header and footer. It is optimised as `assets/katleho-kulube-portrait.webp` for the site identity and exported in ICO, PNG and Apple touch icon sizes for browser tabs and mobile bookmarks.
+
+## Domain-dependent SEO launch tasks
+Before publishing, replace `YOUR-DOMAIN-HERE` in `robots.txt` and `sitemap.xml` with the final HTTPS domain. Then add the live sitemap URL in Google Search Console and Bing Webmaster Tools. The Open Graph image currently uses a relative asset path; for best social preview compatibility, update `og:image` and `twitter:image` in `index.html` to the absolute HTTPS image URL after the domain is known.
