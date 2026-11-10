@@ -120,7 +120,7 @@
       </div>
       <div class="project-grid">
         <article class="project-card reveal ubuntu-project-card" data-category="digital"><a class="project-external" href="https://katlehokulubepoe.github.io/Ubuntu/" target="_blank" rel="noopener noreferrer" aria-label="Open the Ubuntu website in a new tab"><span class="project-image"><img src="assets/ubuntu-website-preview.jpg" alt="Screenshot of the Ubuntu Urban Wear live website homepage" loading="lazy"><span class="view-label">Open Ubuntu website ↗</span></span><span class="project-meta"><span>LIVE WEBSITE / 01</span><span>Ubuntu — Visit live website ↗</span></span></a></article>
-        <article class="project-card reveal" data-category="digital"><button type="button" class="project-open" data-image="assets/creative-process.jpg" data-title="Creative process and thinking" data-alt="Creative process diagram from portfolio"><span class="project-image"><img src="assets/creative-process.jpg" alt="Creative process diagram" loading="lazy"><span class="view-label">View project ↗</span></span><span class="project-meta"><span>01 / PROCESS</span><span>Creative process & thinking</span></span></button></article>
+        <article class="project-card reveal" data-category="digital"><button type="button" class="project-open" data-image="assets/creative-process.jpg" data-process="true" data-title="Creative process and thinking" data-alt="Creative process diagram from portfolio"><span class="project-image"><img src="assets/creative-process.jpg" alt="Creative process diagram" loading="lazy"><span class="view-label">View project ↗</span></span><span class="project-meta"><span>01 / PROCESS</span><span>Creative process & thinking</span></span></button></article>
         <article class="project-card reveal" data-category="digital"><button type="button" class="project-open" data-image="assets/presentation-design.jpg" data-title="PowerPoint presentation design" data-alt="Presentation cover and diagram design examples"><span class="project-image"><img src="assets/presentation-design.jpg" alt="PowerPoint presentation design examples" loading="lazy"><span class="view-label">View project ↗</span></span><span class="project-meta"><span>02 / PRESENTATION</span><span>PowerPoint presentation design</span></span></button></article>
         <article class="project-card reveal" data-category="editorial"><button type="button" class="project-open" data-image="assets/document-design.jpg" data-title="Document and proposal design" data-alt="Proposal and tender document design samples"><span class="project-image"><img src="assets/document-design.jpg" alt="Document and tender proposal design samples" loading="lazy"><span class="view-label">View project ↗</span></span><span class="project-meta"><span>03 / DOCUMENTS</span><span>Document & proposal design</span></span></button></article>
         <article class="project-card reveal" data-category="brand"><button type="button" class="project-open" data-image="assets/logo-design.jpg" data-title="Logo and brand identity design" data-alt="Selection of logo and identity designs"><span class="project-image"><img src="assets/logo-design.jpg" alt="Logo and brand identity design examples" loading="lazy"><span class="view-label">View project ↗</span></span><span class="project-meta"><span>04 / BRANDING</span><span>Logo & identity design</span></span></button></article>
@@ -159,7 +159,24 @@
 
   <footer><a class="brand footer-brand" href="#top"><img class="brand-portrait" src="assets/katleho-kulube-portrait.webp" alt="Portrait of Katleho Kulube"><span>Katleho Kulube<small>Creative Portfolio</small></span></a><span>© <span id="year"></span> Katleho Kulube. All rights reserved.</span><a href="https://www.linkedin.com/in/katleho-kulube-b4024b200/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="#top" class="back-top">Back to top ↑</a></footer>
 
-  <dialog class="lightbox" id="lightbox" aria-label="Project preview"><button type="button" class="lightbox-close" aria-label="Close project preview">×</button><h2 id="lightbox-title"></h2><img id="lightbox-image" src="" alt=""><p>Project preview from the portfolio document.</p></dialog>
+  <dialog class="lightbox" id="lightbox" aria-label="Project preview">
+    <button type="button" class="lightbox-close" aria-label="Close project preview">×</button>
+    <h2 id="lightbox-title"></h2>
+    <img id="lightbox-image" src="" alt="">
+    <section class="process-viewer" id="process-viewer" hidden aria-label="Interactive creative process">
+      <p class="process-intro">A good creative project moves through five connected stages. Select any stage to explore it, or let the sequence play from beginning to end.</p>
+      <div class="process-track" id="process-track">
+        <button class="process-node" type="button" data-step="0" aria-pressed="false"><span class="process-node-num">01</span><span class="process-node-title">Get the brief</span><span class="process-node-copy">Understand the goal, audience and starting point.</span></button>
+        <button class="process-node" type="button" data-step="1" aria-pressed="false"><span class="process-node-num">02</span><span class="process-node-title">Research</span><span class="process-node-copy">Gather insight, references, colour and market context.</span></button>
+        <button class="process-node" type="button" data-step="2" aria-pressed="false"><span class="process-node-num">03</span><span class="process-node-title">Design</span><span class="process-node-copy">Turn the insight into purposeful visual ideas.</span></button>
+        <button class="process-node" type="button" data-step="3" aria-pressed="false"><span class="process-node-num">04</span><span class="process-node-title">Feedback</span><span class="process-node-copy">Review, share perspectives and refine the work.</span></button>
+        <button class="process-node" type="button" data-step="4" aria-pressed="false"><span class="process-node-num">05</span><span class="process-node-title">Finalise</span><span class="process-node-copy">Polish, prepare and deliver the finished project.</span></button>
+      </div>
+      <div class="process-detail" id="process-detail" aria-live="polite"><span class="process-detail-label">STAGE 01</span><h3>Get the brief</h3><p>Start by listening carefully. Define the problem, clarify the objectives and agree what success should look like before creative work begins.</p></div>
+      <div class="process-actions"><span id="process-status">Stage 1 of 5</span><button type="button" id="process-replay">↻ Replay process</button></div>
+    </section>
+    <p class="lightbox-caption" id="lightbox-caption">Project preview from the portfolio document.</p>
+  </dialog>
   <script src="script.js"></script>
   <script src="analytics.js" defer></script>
   <aside class="analytics-consent" id="analytics-consent" aria-label="Analytics preferences" hidden>

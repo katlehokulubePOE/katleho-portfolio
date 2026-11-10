@@ -90,6 +90,44 @@
   /* Project preview: native dialog where available, accessible overlay otherwise. */
   var dialog = document.getElementById('lightbox');
   var modalImage = document.getElementById('lightbox-image');
+  var processViewer = document.getElementById('process-viewer');
+  var lightboxCaption = document.getElementById('lightbox-caption');
+  var processTimer = null;
+  var processNodes = processViewer ? Array.prototype.slice.call(processViewer.querySelectorAll('.process-node')) : [];
+  var processCopy = [
+    ['Get the brief','Start by listening carefully. Define the problem, clarify the objectives and agree what success should look like before creative work begins.'],
+    ['Research','Explore the audience, context and competitors. Collect useful references, visual inspiration, colour cues and information that will guide the direction.'],
+    ['Design','Translate the brief and research into clear visual concepts. Experiment with layout, typography, imagery and composition, then choose the strongest direction.'],
+    ['Feedback','Present the work, invite constructive responses and check it against the original brief. Use what you learn to make focused improvements.'],
+    ['Finalise','Polish the chosen solution, check every detail and prepare the correct files. Present or deliver the finished work to the client or intended audience.']
+  ];
+  function setProcessStep(index) {
+    if (!processViewer) return;
+    index = Math.max(0, Math.min(4, index));
+    processNodes.forEach(function (node, i) {
+      node.classList.toggle('is-current', i === index);
+      node.classList.toggle('is-complete', i < index);
+      node.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+    });
+    var detail = document.getElementById('process-detail');
+    if (detail) detail.innerHTML = '<span class="process-detail-label">STAGE 0' + (index + 1) + '</span><h3>' + processCopy[index][0] + '</h3><p>' + processCopy[index][1] + '</p>';
+    var status = document.getElementById('process-status');
+    if (status) status.textContent = 'Stage ' + (index + 1) + ' of 5';
+  }
+  function stopProcess() { if (processTimer) { window.clearInterval(processTimer); processTimer = null; } }
+  function playProcess() {
+    stopProcess(); setProcessStep(0);
+    if (prefersReducedMotion()) return;
+    var step = 0;
+    processTimer = window.setInterval(function () {
+      step += 1;
+      if (step > 4) { stopProcess(); return; }
+      setProcessStep(step);
+    }, 1750);
+  }
+  processNodes.forEach(function (node) { node.addEventListener('click', function () { stopProcess(); setProcessStep(Number(node.getAttribute('data-step'))); }); });
+  var replayProcess = document.getElementById('process-replay');
+  if (replayProcess) replayProcess.addEventListener('click', playProcess);
   var closeButton = dialog ? dialog.querySelector('.lightbox-close') : null;
   var supportsDialog = !!(dialog && typeof dialog.showModal === 'function' && typeof dialog.close === 'function');
   var previousFocus = null;
@@ -99,6 +137,11 @@
     if (title) title.textContent = button.getAttribute('data-title') || 'Project preview';
     modalImage.src = button.getAttribute('data-image') || '';
     modalImage.alt = button.getAttribute('data-alt') || '';
+    var isProcess = button.getAttribute('data-process') === 'true';
+    if (processViewer) processViewer.hidden = !isProcess;
+    if (modalImage) modalImage.hidden = isProcess;
+    if (lightboxCaption) lightboxCaption.hidden = isProcess;
+    if (isProcess) playProcess(); else stopProcess();
     previousFocus = button;
     if (supportsDialog) {
       if (!dialog.open) dialog.showModal();
@@ -112,6 +155,7 @@
     }
   }
   function closePreview() {
+    stopProcess();
     if (!dialog) return;
     if (supportsDialog && dialog.open) dialog.close();
     else {
