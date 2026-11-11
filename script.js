@@ -110,7 +110,19 @@
       node.setAttribute('aria-pressed', i === index ? 'true' : 'false');
     });
     var detail = document.getElementById('process-detail');
-    if (detail) detail.innerHTML = '<span class="process-detail-label">STAGE 0' + (index + 1) + '</span><h3>' + processCopy[index][0] + '</h3><p>' + processCopy[index][1] + '</p>';
+    if (detail) {
+      while (detail.firstChild) detail.removeChild(detail.firstChild);
+      var label = document.createElement('span');
+      label.className = 'process-detail-label';
+      label.textContent = 'STAGE 0' + (index + 1);
+      var heading = document.createElement('h3');
+      heading.textContent = processCopy[index][0];
+      var paragraph = document.createElement('p');
+      paragraph.textContent = processCopy[index][1];
+      detail.appendChild(label);
+      detail.appendChild(heading);
+      detail.appendChild(paragraph);
+    }
     var status = document.getElementById('process-status');
     if (status) status.textContent = 'Stage ' + (index + 1) + ' of 5';
   }
