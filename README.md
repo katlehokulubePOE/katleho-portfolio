@@ -59,3 +59,23 @@ The supplied professional portrait replaces the initials mark in the header and 
 
 ## Domain-dependent SEO launch tasks
 Before publishing, replace `YOUR-DOMAIN-HERE` in `robots.txt` and `sitemap.xml` with the final HTTPS domain. Then add the live sitemap URL in Google Search Console and Bing Webmaster Tools. The Open Graph image currently uses a relative asset path; for best social preview compatibility, update `og:image` and `twitter:image` in `index.html` to the absolute HTTPS image URL after the domain is known.
+
+
+## Software Learning Hub (new)
+
+The homepage now includes a Software Learning Hub section with an 18-second portfolio introduction video and planned tutorial categories. The introduction video is a local placeholder, not a published YouTube lesson.
+
+### Replacing the placeholder with a YouTube episode
+
+When the first tutorial is published, replace the local `<video>` element in `index.html` with a responsive YouTube embed using the real video ID. Use the YouTube `youtube-nocookie.com` embed domain where practical, give the iframe a descriptive `title`, and add `loading="lazy"` and `allowfullscreen`. Do not publish a made-up channel URL or video ID.
+
+### Suggested weekly production workflow
+
+1. Choose one learner outcome and research the software version and official documentation.
+2. Prepare a concise lesson plan, voice-over script and a small practical project.
+3. Record the screen demonstration and narration; use licensed or original music and assets.
+4. Edit, caption and quality-check the lesson, including the software version shown.
+5. Publish with a clear title, chapters, description, relevant links and a practical exercise.
+6. Add the real YouTube embed and episode details to this section; review audience questions for the next lesson.
+
+Recommended first series: Photoshop foundations, selections and layers, masks, photo correction, typography and a final poster project. Keep early lessons beginner-friendly and build toward a finished portfolio-quality project.
