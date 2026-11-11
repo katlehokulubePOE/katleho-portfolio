@@ -91,6 +91,22 @@
   var dialog = document.getElementById('lightbox');
   var modalImage = document.getElementById('lightbox-image');
   var processViewer = document.getElementById('process-viewer');
+  var presentationViewer = document.getElementById('presentation-viewer');
+  var presentationSlide = document.getElementById('presentation-slide');
+  var presentationIndex = 0;
+  var presentationSlides = ['assets/presentation-slide-01.jpg','assets/presentation-slide-02.jpg','assets/presentation-slide-03.jpg','assets/presentation-slide-04.jpg','assets/presentation-slide-05.jpg','assets/presentation-slide-06.jpg','assets/presentation-slide-07.jpg'];
+  function showPresentationSlide(index) {
+    if (!presentationSlide) return;
+    presentationIndex = (index + presentationSlides.length) % presentationSlides.length;
+    presentationSlide.src = presentationSlides[presentationIndex];
+    presentationSlide.alt = 'PowerPoint presentation example, slide ' + (presentationIndex + 1) + ' of ' + presentationSlides.length;
+    var status = document.getElementById('presentation-status');
+    if (status) status.textContent = 'Slide ' + (presentationIndex + 1) + ' of ' + presentationSlides.length;
+  }
+  var presentationPrev = document.getElementById('presentation-prev');
+  var presentationNext = document.getElementById('presentation-next');
+  if (presentationPrev) presentationPrev.addEventListener('click', function () { showPresentationSlide(presentationIndex - 1); });
+  if (presentationNext) presentationNext.addEventListener('click', function () { showPresentationSlide(presentationIndex + 1); });
   var lightboxCaption = document.getElementById('lightbox-caption');
   var processTimer = null;
   var processNodes = processViewer ? Array.prototype.slice.call(processViewer.querySelectorAll('.process-node')) : [];
@@ -138,10 +154,13 @@
     modalImage.src = button.getAttribute('data-image') || '';
     modalImage.alt = button.getAttribute('data-alt') || '';
     var isProcess = button.getAttribute('data-process') === 'true';
+    var isPresentation = button.getAttribute('data-presentation') === 'true';
     if (processViewer) processViewer.hidden = !isProcess;
-    if (modalImage) modalImage.hidden = isProcess;
-    if (lightboxCaption) lightboxCaption.hidden = isProcess;
+    if (presentationViewer) presentationViewer.hidden = !isPresentation;
+    if (modalImage) modalImage.hidden = isProcess || isPresentation;
+    if (lightboxCaption) lightboxCaption.hidden = isProcess || isPresentation;
     if (isProcess) playProcess(); else stopProcess();
+    if (isPresentation) showPresentationSlide(0);
     previousFocus = button;
     if (supportsDialog) {
       if (!dialog.open) dialog.showModal();
